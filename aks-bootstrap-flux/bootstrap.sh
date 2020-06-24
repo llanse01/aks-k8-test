@@ -19,17 +19,17 @@ export KUBECONFIG=kubeconfig
 ############################################
 ## Install Tiller (Helm server component) ##
 
-kubectl -n kube-system create sa tiller
-kubectl create clusterrolebinding tiller-cluster-role --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+#kubectl -n kube-system create sa tiller
+#kubectl create clusterrolebinding tiller-cluster-role --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
 
-helm init --history-max 5 --skip-refresh --upgrade --service-account tiller
+#helm init --history-max 5 --skip-refresh --upgrade --service-account tiller
 
-until helm version --server --tiller-connection-timeout 5
-do
-  echo "Waiting for tiller to become available..."  &&  sleep 5
-done
+#until helm version --server --tiller-connection-timeout 5
+#do
+#  echo "Waiting for tiller to become available..."  &&  sleep 5
+#done
 
-helm repo update
+#helm repo update
 
 
 
