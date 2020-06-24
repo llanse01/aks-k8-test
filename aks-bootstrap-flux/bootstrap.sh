@@ -7,7 +7,7 @@
 
 ## path dictated by terraform-aws-modules/terraform-aws-eks module
 #export KUBECONFIG=${config_output_path}kubeconfig_${cluster_name}
-az aks get-credentials --resource-group dev-test-pr-IOG-US --name aks-INS-IOG-US-test-pr --admin --file kubeconfig
+az aks get-credentials --resource-group app-llansetest-sandbox-useast2 --name aks-app-llansetest-sandbox-useast2 --admin --file kubeconfig
 export KUBECONFIG=kubeconfig
 
 ######################################
