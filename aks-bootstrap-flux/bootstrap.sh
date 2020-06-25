@@ -8,8 +8,8 @@
 ## path dictated by terraform-aws-modules/terraform-aws-eks module
 #export KUBECONFIG=${config_output_path}kubeconfig_${cluster_name}
 #az aks get-credentials --resource-group ${resource_group} --name ${cluster_name} --admin --file kubeconfig
-az aks get-credentials --resource-group ${resource_group} --name ${cluster_name} --admin --file /Users/slland/terraform_work/LN-DEV/test/kubeconfig-new
-export KUBECONFIG=/Users/slland/terraform_work/LN-DEV/test/kubeconfig-new
+az aks get-credentials --resource-group ${resource_group} --name ${cluster_name} --admin --file ${config_output_path}/kubeconfig_${cluster_name}
+export KUBECONFIG=${config_output_path}/kubeconfig_${cluster_name}
 
 ######################################
 ## Remove default gp2 storage class ##
