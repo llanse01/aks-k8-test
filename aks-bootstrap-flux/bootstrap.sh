@@ -25,10 +25,11 @@ kubectl create clusterrolebinding tiller-cluster-role --clusterrole=cluster-admi
 
 helm init --history-max 5 --skip-refresh --upgrade --service-account tiller
 
-until helm version --server --tiller-connection-timeout 5
-do
-  echo "Waiting for tiller to become available..."  &&  sleep 5
-done
+#until 
+helm version --server --tiller-connection-timeout 5
+#do
+#  echo "Waiting for tiller to become available..."  &&  sleep 5
+#done
 
 helm repo update
 
