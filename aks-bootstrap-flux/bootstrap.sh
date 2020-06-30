@@ -10,6 +10,7 @@
 #az aks get-credentials --resource-group ${resource_group} --name ${cluster_name} --admin --file kubeconfig
 az aks get-credentials --resource-group ${resource_group} --name ${cluster_name} --admin --file ${config_output_path}/kubeconfig_${cluster_name}
 export KUBECONFIG=${config_output_path}/kubeconfig_${cluster_name}
+#kubectl create secrete generic flux-git-deploy --from-file=identity=${config_output_path}/id_rsa
 
 ######################################
 ## Remove default gp2 storage class ##
@@ -72,3 +73,5 @@ helm upgrade -i flux-helm-operator \
   --set createCRD=true \
   --namespace flux \
   fluxcd/helm-operator
+
+kubectl create secrete generic flux-git-deploy --from-file=identity=${config_output_path}/id_rsa
