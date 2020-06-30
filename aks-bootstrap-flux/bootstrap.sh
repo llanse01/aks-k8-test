@@ -56,6 +56,7 @@ helm upgrade -i prometheus-operator \
 ## Install Flux ##
 
 kubectl create ns flux
+kubectl create ns fluxcd
 
 helm repo add fluxcd https://charts.fluxcd.io
 
