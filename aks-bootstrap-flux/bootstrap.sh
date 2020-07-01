@@ -72,7 +72,6 @@ helm upgrade -i flux \
 helm upgrade -i flux-helm-operator \
   --set createCRD=true \
   --namespace flux \
-
   fluxcd/helm-operator
   
 kubectl delete secret flux-git-deploy -n flux
