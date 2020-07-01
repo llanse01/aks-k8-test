@@ -66,13 +66,14 @@ helm upgrade -i flux \
   --set git.url=${config_repo_url} \
   --set-string ssh.known_hosts="$(ssh-keyscan ${config_repo_host})" \
   --set syncGarbageCollection.enabled=true \
+  --git-user=llanse01 \
   --namespace flux \
   fluxcd/flux
   
 helm upgrade -i flux-helm-operator \
   --set createCRD=true \
   --namespace flux \
-  --git-user llanse01 \
+
   fluxcd/helm-operator
   
 kubectl delete secret flux-git-deploy -n flux
