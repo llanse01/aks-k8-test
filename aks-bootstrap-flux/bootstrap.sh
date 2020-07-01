@@ -74,4 +74,4 @@ helm upgrade -i flux-helm-operator \
   --namespace flux \
   fluxcd/helm-operator
 
-kubectl create secrete generic flux-git-deploy --from-file=identity=${config_output_path}/id_rsa
+kubectl --namespace flux create secrete generic flux-git-deploy --from-file=identity=${config_output_path}/id_rsa
