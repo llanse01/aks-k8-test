@@ -73,5 +73,6 @@ helm upgrade -i flux-helm-operator \
   --set createCRD=true \
   --namespace flux \
   fluxcd/helm-operator
-
-kubectl --namespace flux create secrete generic flux-git-deploy --from-file=identity=${config_output_path}/id_rsa
+  
+kubectl delete secret flux-git-deploy -n flux
+kubectl --namespace flux     create secret generic flux-git-deploy --from-file=identity=${config_output_path}/id_rsa
