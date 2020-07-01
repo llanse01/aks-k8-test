@@ -66,7 +66,7 @@ helm upgrade -i flux \
   --set git.url=${config_repo_url} \
   --set-string ssh.known_hosts="$(ssh-keyscan ${config_repo_host})" \
   --set syncGarbageCollection.enabled=true \
-  --git-user=llanse01 \
+#  --git-user=llanse01 \
   --namespace flux \
   fluxcd/flux
   
