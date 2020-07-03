@@ -64,17 +64,17 @@ helm repo add fluxcd https://charts.fluxcd.io
 
 helm upgrade -i flux \
   --set git.url=${config_repo_url} \
-  --git-user="llanse01" \
-  --git-email="sean.lland@gmail.com" \
+  --set git.user="llanse01" \
+  --set git.email="sean.lland@gmail.com" \
   --set-string ssh.known_hosts="$(ssh-keyscan ${config_repo_host})" \
   --set syncGarbageCollection.enabled=true \
   --namespace flux \
   fluxcd/flux
   
-helm upgrade -i flux-helm-operator \
-  --set createCRD=true \
-  --namespace flux \
-  fluxcd/helm-operator
+#helm upgrade -i flux-helm-operator \
+#  --set createCRD=true \
+#  --namespace flux \
+#  fluxcd/helm-operator
   
 kubectl delete secret flux-git-deploy -n flux
 kubectl --namespace flux     create secret generic flux-git-deploy --from-file=identity=${config_output_path}/id_rsa
