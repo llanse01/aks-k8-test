@@ -71,10 +71,11 @@ helm upgrade -i flux \
   --namespace flux \
   fluxcd/flux
   
-#helm upgrade -i flux-helm-operator \
-#  --set createCRD=true \
-#  --namespace flux \
-#  fluxcd/helm-operator
+helm upgrade -i flux-helm-operator \
+  #--set createCRD=true \
+  --skip-crds \
+  --namespace flux \
+  fluxcd/helm-operator
   
 kubectl delete secret flux-git-deploy -n flux
 kubectl --namespace flux     create secret generic flux-git-deploy --from-file=identity=${config_output_path}/id_rsa
