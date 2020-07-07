@@ -72,8 +72,7 @@ helm upgrade -i flux \
   fluxcd/flux
   
 helm upgrade -i flux-helm-operator \
-  #--set createCRD=true \
-  --skip-crds \
+  --set createCRD=true \
   --namespace flux \
   fluxcd/helm-operator
   
