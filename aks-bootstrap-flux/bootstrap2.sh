@@ -49,9 +49,6 @@ metadata:
 
 kubectl apply -f ${config_map} \
    --namespace fluxcd
-   
-#key=`echo "\"(ssh-keyscan -t rsa -p "$(echo "${config_repo_url}" | sed -e "s/\([^@]*\)\@\([^:]*\):\([0-9]*\).*/\3/" | sed -e "s/^$/22/")" "$(echo "${config_repo_url}" | sed -e "s/\([^@]*\)\@\([^:]*\).*/\2/")")"\"`
-#key_ticks=`echo "\"$key"\"`
 
 flux_values=${flux_values}
 printf '%s' "# VALUES
@@ -60,7 +57,7 @@ git:
   path: ${config_repo_path}
   secretName: flux-ssh
 ssh:
-  known_hosts: 
+  known_hosts: $(ssh-keyscan -t rsa -p "$(echo "${config_repo_url}" | sed -e "s/\([^@]*\)\@\([^:]*\):\([0-9]*\).*/\3/" | sed -e "s/^$/22/")" "$(echo "${config_repo_url}" | sed -e "s/\([^@]*\)\@\([^:]*\).*/\2/")")
 manifestGeneration: true
 syncGarbageCollection:
   enabled: true
