@@ -64,8 +64,8 @@ helm repo add fluxcd https://charts.fluxcd.io
 
 helm upgrade -i flux \
   --set git.url=${config_repo_url} \
-  --set git.user="llanse01" \
-  --set git.email="sean.lland@gmail.com" \
+  --set git.user="" \
+  --set git.email="" \
   --set-string ssh.known_hosts="$(ssh-keyscan ${config_repo_host})" \
   --set syncGarbageCollection.enabled=true \
   --namespace flux \
