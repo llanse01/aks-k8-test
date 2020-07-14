@@ -22,11 +22,11 @@ kubectl create namespace fluxcd
 kubectl create secret generic flux-ssh \
    --namespace fluxcd \
    --from-file=identity="${config_repo_ssh_key}"
-   
+
 kubectl create secret generic flux-ssh2 \
    --namespace fluxcd \
    --from-file=identity="${reference_repo_ssh_key}"
-   
+
 printf '%s' "# Values
 apiVersion: v1
 data:
@@ -37,7 +37,6 @@ data:
      User git
      IdentityFile /root/reference/identity
      LogLevel error
-
     Host *
      StrictHostKeyChecking yes
      IdentityFile /etc/fluxd/ssh/identity
@@ -67,19 +66,18 @@ extraVolumes:
    secret:
      secretName: flux-ssh2
      defaultMode: 0400
-- name: ssh-config
-  configMap:
+ - name: ssh-config
+   configMap:
    name: ssh-config
 extraVolumeMounts:
  - name: git-keygen2
    mountPath: /root/sean
  - name: ssh-config
    mountPath: /etc/ssh/
-
-" > "$${flux_values}"
+" > "${flux_values}"
 
 helm upgrade --install --skip-crds \
-  --values "$${flux_values}" \
+  --values "${flux_values}" \
   --namespace fluxcd \
   --version 1.3.0 \
   --wait \
