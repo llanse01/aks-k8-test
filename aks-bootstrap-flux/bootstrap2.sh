@@ -82,5 +82,5 @@ helm upgrade --install --skip-crds \
   --wait \
   flux fluxcd/flux
 
-sleep 1m
+sleep 30
 fluxctl --k8s-fwd-ns fluxcd sync --timeout 5m
