@@ -71,7 +71,7 @@ extraVolumes:
     name: ssh-config
 extraVolumeMounts:
  - name: git-keygen2
-   mountPath: /temp/reference
+   mountPath: /tmp/reference
  - name: ssh-config
    mountPath: /etc/ssh/
 " > "${flux_values}"
