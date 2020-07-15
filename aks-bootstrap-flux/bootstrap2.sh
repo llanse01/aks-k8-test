@@ -35,7 +35,7 @@ data:
      HostName github.com
      StrictHostKeyChecking no
      User git
-     IdentityFile /root/reference/identity
+     IdentityFile /tmp/reference/identity
      LogLevel error
     Host *
      StrictHostKeyChecking yes
@@ -71,7 +71,7 @@ extraVolumes:
     name: ssh-config
 extraVolumeMounts:
  - name: git-keygen2
-   mountPath: /root/reference
+   mountPath: /temp/reference
  - name: ssh-config
    mountPath: /etc/ssh/
 " > "${flux_values}"
