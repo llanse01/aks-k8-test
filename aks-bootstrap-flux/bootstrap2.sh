@@ -67,10 +67,10 @@ extraVolumes:
      defaultMode: 0400
  - name: ssh-config
    configMap:
-   name: ssh-config
+    name: ssh-config
 extraVolumeMounts:
  - name: git-keygen2
-   mountPath: /root/sean
+   mountPath: /root/reference
  - name: ssh-config
    mountPath: /etc/ssh/
 " > "${flux_values}"
